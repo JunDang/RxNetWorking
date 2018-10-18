@@ -10,9 +10,9 @@ In the project navigator, choose the folder of RxNetWorking. In the Info.plist, 
 ## Integrate the third libraries
 The third libraries will be used include: 
 ### RxSwift and RxCocoa
-This is the language will be used for this project. For more information, refer to this link: https://github.com/. ReactiveX/RxSwift
+This is the language will be used for this project. For more information, refer to  [./ReactiveX/RxSwift](https://github.com/. ReactiveX/RxSwift)
 ### RxTest and RxBlocking
-This will be used for test. For more information, refer to this link: https://github.com/. ReactiveX/RxSwift
+This will be used for test. For more information, refer to [./ReactiveX/RxSwift](https://github.com/. ReactiveX/RxSwift)
 ### ReachabilitySwift
 It will be used to detect if the network is reachable.
 ### SwiftMessages
