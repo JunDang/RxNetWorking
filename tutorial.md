@@ -3,6 +3,7 @@ In this tutorial, I will implement the networking request in RxSwift, fetch the 
 - JSON data parsing with Swift 4 Codable.
 - Implement MVVM design pattern
 - Unit test with RxTest
+
 #Project setup 
 Launch Xcode 10 and Create a new project by choosing the Single View Application and name it as RxNetWorking. Set Language to Swift and devices to iPhone. Check Include Unit Tests and keep both Core Data and Include UI Tests unchecked. Now within the project navigator, you can see the RxNetWorking Target and RxNetWorkingTests Target. Be sure to make the iOS Deployment Target and Swift Language Version in the Building Settings for both the project target and the tests target the same. 
 In the project navigator, choose the folder of RxNetWorking. In the Info.plist, add App Transport Security Settings and its subitem Allow Arbitrary Loads and set the value to YES.
