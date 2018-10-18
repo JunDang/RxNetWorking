@@ -18,5 +18,5 @@ It will be used to detect if the network is reachable.
 ### SwiftMessages
 It will be used to display messages to the users.
 
-I am going to use CocoaPods to install these third library. If not familiar with CocoaPods, refer to this link: https://cocoapods.org. In the terminal, under the project, create  podfile as ./podfile
+I am going to use CocoaPods to install these third library. If not familiar with CocoaPods, refer to this link: https://cocoapods.org. In the terminal, under the project, create  podfile as [./podfile](https://github.com/JunDang/RxNetWorking/blob/master/podfile)
 
