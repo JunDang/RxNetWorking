@@ -19,7 +19,59 @@ It will be used to detect if the network is reachable.
 #### SwiftMessages
 It will be used to display messages to the users.
 
-I am going to use CocoaPods to install these third library. If not familiar with CocoaPods, refer to this link: https://cocoapods.org. In the terminal, under the project, create  podfile as [./podfile](https://github.com/JunDang/RxNetWorking/blob/master/podfile)
-Then install the podfile. At the same time, create a [./gitignore](https://github.com/JunDang/RxNetWorking/blob/master/.gitignore)so that we can ignore some files when push the project up to the GitHub later on.
+I am going to use CocoaPods to install these third library. If not familiar with CocoaPods, refer to this link: https://cocoapods.org. In the terminal, under the project, create a [./podfile](https://github.com/JunDang/RxNetWorking/blob/master/podfile) and install the podfile. At the same time, create a [./gitignore](https://github.com/JunDang/RxNetWorking/blob/master/.gitignore)so that we can ignore some files when push the project up to the GitHub.
+## Implement  the MVVM design pattern
+MVVM design pattern has many advantages over MVC pattern and many articles have described these detailedly. For example, refer to this article from https://www.raywenderlich.com/34-design-patterns-by-tutorials-mvvm.
+So in this tutorial, I will mainly focus on how to implement the project by following the MVVM design pattern. Now let’s work with the model layer.
+### Model layer
+Open the RxNetWorking.xcworkspace file, under the RxNetWorking, create a new group named Model, and within the Model group, create a new swift file named FlickrPhotos.swift. Click to open the swift file. 
+To fetch a photo, we firstly send a request to the Flickr API and obtain a list of image URLs. Then via the image URLs, we obtain the images. Let’s take a look at the JSON response from the Flickr API. The JSON has a root element “photos”. Inside “photos”, there is a next level root element “photo” which is an array of photos, as shown below. 
+```
+{
+"photos": {
+"page": 1,
+"pages": 10,
+"perpage": 25,
+"total": "246",
+"photo": [
+{
+"id": "21582914405",
+"owner": "42922649@N00",
+"secret": "3c4875cc7e",
+"server": "683",
+"farm": 1,
+"title": "Stand Tall",
+"ispublic": 1,
+"isfriend": 0,
+"isfamily": 0
+},
+{
+"id": "21530307402",
+"owner": "43246590@N06",
+"secret": "d644667c02",
+"server": "5694",
+"farm": 6,
+"title": "Sunflowers before the storm",
+"ispublic": 1,
+"isfriend": 0,
+"isfamily": 0
+},
+{
+"id": "18879744526",
+"owner": "20286982@N07",
+"secret": "696139cdbe",
+"server": "5511",
+"farm": 6,
+"title": "Golden Plains",
+"ispublic": 1,
+"isfriend": 0,
+"isfamily": 0
+}
+]
+},
+"stat": "ok"
+}
+```
+
 
 
