@@ -72,6 +72,43 @@ To fetch a photo, we firstly send a request to the Flickr API and obtain a list 
 "stat": "ok"
 }
 ```
+ Here is the [./Model](https://github.com/JunDang/RxNetWorking/blob/master/RxNetWorking/Model/FlickrPhotos.swift).
+ Firstly create a struct named FlickrPhoto to represent the single photo and let it conform to the Codable protocol. We need the variables of farm, server, id and secret to construct the image url.  Let’s put these variables in the struct, and write the corresponding CodingKeys so that the items can be found when being decoded.  Then implement the init(farm: Int, id: String, server: String, secrect: String) and  init(from decoder: Decoder) methods. We also need construct the image URL with those parameters. So let’s implement the function creatImageURL() which has a return type of NSURL. 
+ Secondly, create a struct named FlickrPhotos to hold the array of FlickrPhoto and let it conform to the Codable protocol. The CodingKey for finding the item is “photo”.   
+ Finally, move to the root element “photos”and create a struct named FlickrModel which holds FlickrPhotos. And the key for finding this element is “photos”. 
+ ### Networking
+ Create a new group named Services under the RxNetWorking. Create a new swift file under this group and name it as InternetService. Import RxSwift and RxCocoa. Create an enumeration Result<T, Error> as the generic return type of networking request, see below. For the networking request from REST APIs, I choose to use the Apples’s URLSession because it is powerful and always updated simultaneously with the newest Swift versions. Now, let’s make URLSession reactive. Write a class InternetService, then write a static private function request which takes two parameters: a string of base url from the REST APIs and a dictionary of parameters which wii be the url components. And the function will return an Observable of Result<Data, Error>.  The function is implemented as below:
+```
+static private func request(_ baseURL: String = "", parameters: [String: String] = [:]) -> Observable<Result<Data, Error>> {
+//1
+   let defaultSession = URLSession(configuration: .default)
+   var dataTask: URLSessionDataTask?
+//2
+return Observable.create { observer in
+var components = URLComponents(string: baseURL)!
+components.queryItems = parameters.map(URLQueryItem.init)
+let url = components.url!
+var result: Result<Data, Error>?
+dataTask = defaultSession.dataTask(with: url) { data, response, error in
+if let data = data, let response = response as? HTTPURLResponse, response.statusCode == 200 {
+result = Result<Data, Error>.Success(data)
+} else {
+if let error = error {
+result = Result<Data, Error>.Failure(error)
+}
+}
+observer.onNext(result!)
+observer.onCompleted()
+}
+dataTask?.resume()
+//3
+return Disposables.create {
+dataTask?.cancel()
+}
+}
+}
+
+```
 
 
 
