@@ -23,7 +23,7 @@ I am going to use CocoaPods to install these third library. If not familiar with
 ## Implement  the MVVM design pattern
 MVVM design pattern has many advantages over MVC pattern and many articles have described these detailedly. For example, refer to this article from https://www.raywenderlich.com/34-design-patterns-by-tutorials-mvvm.
 So in this tutorial, I will mainly focus on how to implement the project by following the MVVM design pattern. Now let’s work with the model layer.
-### Model layer
+### Model 
 Open the RxNetWorking.xcworkspace file, under the RxNetWorking, create a new group named Model, and within the Model group, create a new swift file named FlickrPhotos.swift. Click to open the swift file. 
 To fetch a photo, we firstly send a request to the Flickr API and obtain a list of image URLs. Then via the image URLs, we obtain the images. Let’s take a look at the JSON response from the Flickr API. The JSON has a root element “photos”. Inside “photos”, there is a next level root element “photo” which is an array of photos, as shown below. 
 ```
