@@ -322,8 +322,90 @@ Here is the explanation of the code:
 1. If the net work is not connected, display the message.
 Override the function viewDidApear, use MessageView to display “Please input search text in the search bar”. I
 
-Build the project, everything is connected and type a text in the search bar, the image is loaded. 
+Build the project. Type a text in the search bar and the image is loaded. 
+### Unit Test
+Open the folder RxNetWorkTests, create new group Mocks. Under Mocks, create a new swift file MockInternetService and write a class MockInternetService and let it conform to InternetServiceProtocol. 
+```
+class MockInternetService: InternetServiceProtocol {
+     //1
+    static var imageURLResult = PublishSubject<Result<NSURL, Error>>()
+    static var imageDataResult = PublishSubject<Result<Data, Error>>()
+    static var imageResult = PublishSubject<Result<UIImage, Error>>()
+    //2
+    static func searchImageURL(searchText: String) -> Observable<Result<NSURL, Error>> {
+        return imageURLResult.asObservable()
+    }
+    //3
+    static func sendRequest(resultNSURL: Result<NSURL, Error>) -> Observable<Result<Data, Error>> {
+       return imageDataResult.asObservable()
+    }
+    //4
+    static func getImage(resultNSURL: Result<NSURL, Error>, cache: ImageDataCachingProtocol.Type) -> Observable<Result<UIImage, Error>> {
+       switch resultNSURL {
+       case .Success:
+          return self.sendRequest(resultNSURL:resultNSURL)
+             .map() {(imageDataResult) in
+                 switch imageDataResult {
+                 case .Success(let imageData):
+                    let imageFromRequest = UIImage(data: imageData as Data)
+                    return Result<UIImage, Error>.Success(imageFromRequest!)
+                 case .Failure(let error):
+                    return Result<UIImage, Error>.Failure(error)
+                 }
+           }
+      case .Failure(let error):
+         return Observable.just(Result<UIImage, Error>.Failure(error))
+      }
+   }
+}
+```
+Here is the explanation of the code:
+1. Declare 3 static variables PublishSubject<Result<NSURL, Error>>, PublishSubject<Result<Data, Error>>, PublishSubject<Result<UIImage, Error>>. The reason why them as PublishSubject is because they will be used as Observables which will be the return results of the protocol, and also as Observers which emit test values. 
+2. Implement function searchImageURL and return the Observable of imageURLResult.
+3. Implement function sendRequest and return the Observable of imageDataResult.
+4. Implement function getImage and return the Observable of imageResult.
 
+Create a new swift file TestData and implement  the class TestData as [.\TestData](https://github.com/JunDang/RxNetWorking/blob/master/RxNetWorkingTests/Mocks/TestData.swift) which will be used as the test data and test objects. 
+
+Create a new swift file ViewModelTest and implement the class ViewModeTest as below:
+```
+class ViewModelTests: XCTestCase {
+    let bag = DisposeBag()
+    //1
+    private func createViewModel(text: String) -> ViewModel {
+        return ViewModel(searchText: text, apiType: MockInternetService.self, imageDataCacheType: ImageDataCaching.self)
+    }
+    //2
+    func test_whenInitialized_storesInitParams() {
+        let text = "toronto"
+        let viewModel = createViewModel(text: text)
+
+        XCTAssertNotNil(viewModel.searchText)
+        XCTAssertNotNil(viewModel.apiType)
+        XCTAssertNotNil(viewModel.imageDataCacheType)
+    }
+   //3
+   func test_whenInit_callsBindToOutPut_FetchImage() {
+       let text = "toronto"
+       let viewModel = createViewModel(text: text)
+       let flickrImageObservable = viewModel.flickrImageObservable
+
+       DispatchQueue.main.async {
+           MockInternetService.imageURLResult.onNext(Result<NSURL, Error>.Success(TestData.stubImageURL!))
+           MockInternetService.imageDataResult.onNext(Result<Data, Error>.Success(TestData.stubFlickrImageData!))
+       }
+
+       let emitted = try! flickrImageObservable.take(1).toBlocking(timeout: 1).toArray()
+       XCTAssertEqual(emitted[0].pngData(), TestData.stubFlickrImageData)
+   }
+}
+```
+Here is the explanation of the code:
+1. Create the ViewModel with MockInternetService
+2.  When the ViewModel initialized , the stored properties are not nil.
+3.  When imageURLResult emit the stubImageURL of the TestData, and imageDataResult emit the stubFlickrImageData of the TestData, the first emitted value of flikcrImageObservable of the viewModel is equal to the expected value which is the stubFlickrImageData of the TestData.
+
+So far we have completed this project, we have practiced the MVVM, network request to REST API,  and Unit Test written in RxSwift. 
 
 
 

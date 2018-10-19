@@ -28,7 +28,6 @@
 		A57971122158391F00FA784C /* InternetServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57971112158391F00FA784C /* InternetServiceProtocol.swift */; };
 		A57971172158641B00FA784C /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57971162158641B00FA784C /* ViewModel.swift */; };
 		A579711A215868EE00FA784C /* FlickrViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5797119215868EE00FA784C /* FlickrViewController.swift */; };
-		A58B226D215E930A00A5659E /* ViewModelTest2.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58B226C215E930A00A5659E /* ViewModelTest2.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,7 +67,6 @@
 		A57971112158391F00FA784C /* InternetServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternetServiceProtocol.swift; sourceTree = "<group>"; };
 		A57971162158641B00FA784C /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		A5797119215868EE00FA784C /* FlickrViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrViewController.swift; sourceTree = "<group>"; };
-		A58B226C215E930A00A5659E /* ViewModelTest2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelTest2.swift; sourceTree = "<group>"; };
 		A5D994FDB2D88BF8EEABD896 /* Pods_RxNetWorkingAbstract_RxNetWorking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxNetWorkingAbstract_RxNetWorking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E95E261B1FACC09F92D19C61 /* Pods-RxNetWorkingAbstract-RxNetWorking.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxNetWorkingAbstract-RxNetWorking.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RxNetWorkingAbstract-RxNetWorking/Pods-RxNetWorkingAbstract-RxNetWorking.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -164,7 +162,6 @@
 			children = (
 				A52B4EAF215BF4ED0014F1C0 /* Mocks */,
 				A57970F9215835AA00FA784C /* RxNetWorkingTests.swift */,
-				A58B226C215E930A00A5659E /* ViewModelTest2.swift */,
 				A57970FB215835AA00FA784C /* Info.plist */,
 				A52B4EB4215BF5360014F1C0 /* ViewModelTest.swift */,
 			);
@@ -438,7 +435,6 @@
 				A52B4EB3215BF5160014F1C0 /* TestData.swift in Sources */,
 				A52B4EB1215BF5020014F1C0 /* MockInternetService.swift in Sources */,
 				A52B4EB5215BF5360014F1C0 /* ViewModelTest.swift in Sources */,
-				A58B226D215E930A00A5659E /* ViewModelTest2.swift in Sources */,
 				A57970FA215835AA00FA784C /* RxNetWorkingTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
