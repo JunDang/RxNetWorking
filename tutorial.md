@@ -19,7 +19,7 @@ It will be used to detect if the network is reachable.
 #### SwiftMessages
 It will be used to display messages to the users.
 
-I am going to use CocoaPods to install these third library. If not familiar with CocoaPods, refer to [CocoaPods](https://cocoapods.org). In the terminal, under the project, create a [podfile](https://github.com/JunDang/RxNetWorking/blob/master/podfile) and install the podfile. At the same time, create a [.gitignore](https://github.com/JunDang/RxNetWorking/blob/master/.gitignore)so that we can ignore some files when push the project up to the GitHub.
+I am going to use CocoaPods to install these third library. If not familiar with CocoaPods, refer to [CocoaPods](https://cocoapods.org). In the terminal, under the project, create a [podfile](https://github.com/JunDang/RxNetWorking/blob/master/podfile) and install the podfile. At the same time, create a [.gitignore](https://github.com/JunDang/RxNetWorking/blob/master/.gitignore) so that we can ignore some files when push the project up to the GitHub.
 ## Implement  the MVVM design pattern
 MVVM design pattern has many advantages over MVC pattern and many articles have described these detailedly. For example, refer to this article from [MVVM Tutorial](https://www.raywenderlich.com/34-design-patterns-by-tutorials-mvvm).
 So in this tutorial, I will mainly focus on how to implement the project by following the MVVM design pattern. Now let’s work with the model layer.
@@ -267,7 +267,7 @@ Here is the explanation of the code:
 ### View Controller
 Now it is time to implement the UI. The UI is  a very simple one since the major purpose of this project is to demonstrate the MVVM and network request in RxSwift. Create a new group View Controller and create a new swift file FlickrViewController. Write a class FlickrViewController. Open the main story board, set the View Controller to FlickrViewController and embed it in a navigation controller. Drag a UIImageView to the FlickrViewController and make it to cover the FlickrViewController UIView completely via setting the constrains, see below picture.  Then drag a text field to the navigation bar, input Search a picture in the placeholder. Then drag from the UIImageView and TextField to the class FlickrViewController to create outlet variables of backgroundImageView and searchTextField respectively.
 
-I have installed Reachability for detecting the network access status. Now, create a new swift file RxReachability+rx, which I updated  the RxReachability from [RxReachability](https://github.com/bmoliveira/RxReachability).
+I have installed Reachability for detecting the network access status. Now, create a new swift file RxReachability+rx, which I updated  the  [RxReachability](https://github.com/bmoliveira/RxReachability).
 
 In the class FlickrViewController, declare a variable of Reachability, SwiftMessages, and DisposeBag respectively. Override the function viewDidLoad, implement the code as below:
 ```
@@ -365,7 +365,7 @@ Here is the explanation of the code:
 3. Implement function sendRequest and return the Observable of imageDataResult.
 4. Implement function getImage and return the Observable of imageResult.
 
-Create a new swift file TestData and implement  the class TestData as [TestData](https://github.com/JunDang/RxNetWorking/blob/master/RxNetWorkingTests/Mocks/TestData.swift) which will be used as the test data and test objects. 
+Create a new swift file TestData and implement  the class [TestData](https://github.com/JunDang/RxNetWorking/blob/master/RxNetWorkingTests/Mocks/TestData.swift) which will be used as the test data and test objects. 
 
 Create a new swift file ViewModelTest and implement the class ViewModeTest as below:
 ```
