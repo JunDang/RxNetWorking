@@ -11,15 +11,15 @@ In the project navigator, choose the folder of RxNetWorking. In the Info.plist, 
 #### Integrate the third libraries
 The third libraries will be used include: 
 #### RxSwift and RxCocoa
-This is the language will be used for this project. For more information, refer to  [./ReactiveX/RxSwift](https://github.com/ReactiveX/RxSwift)
+This is the language will be used for this project. For more information, refer to  [ReactiveX/RxSwift](https://github.com/ReactiveX/RxSwift)
 #### RxTest and RxBlocking
-This will be used for test. For more information, refer to  [./ReactiveX/RxSwift](https://github.com/ReactiveX/RxSwift)
+This will be used for test. For more information, refer to  [ReactiveX/RxSwift](https://github.com/ReactiveX/RxSwift)
 #### ReachabilitySwift
 It will be used to detect if the network is reachable.
 #### SwiftMessages
 It will be used to display messages to the users.
 
-I am going to use CocoaPods to install these third library. If not familiar with CocoaPods, refer to this link: https://cocoapods.org. In the terminal, under the project, create a [./podfile](https://github.com/JunDang/RxNetWorking/blob/master/podfile) and install the podfile. At the same time, create a [./gitignore](https://github.com/JunDang/RxNetWorking/blob/master/.gitignore)so that we can ignore some files when push the project up to the GitHub.
+I am going to use CocoaPods to install these third library. If not familiar with CocoaPods, refer to this link: https://cocoapods.org. In the terminal, under the project, create a [podfile](https://github.com/JunDang/RxNetWorking/blob/master/podfile) and install the podfile. At the same time, create a [./gitignore](https://github.com/JunDang/RxNetWorking/blob/master/.gitignore)so that we can ignore some files when push the project up to the GitHub.
 ## Implement  the MVVM design pattern
 MVVM design pattern has many advantages over MVC pattern and many articles have described these detailedly. For example, refer to this article from https://www.raywenderlich.com/34-design-patterns-by-tutorials-mvvm.
 So in this tutorial, I will mainly focus on how to implement the project by following the MVVM design pattern. Now let’s work with the model layer.
@@ -72,7 +72,7 @@ To fetch a photo, we firstly send a request to the Flickr API and obtain a list 
 "stat": "ok"
 }
 ```
- Here is the [./Model](https://github.com/JunDang/RxNetWorking/blob/master/RxNetWorking/Model/FlickrPhotos.swift).
+ Here is the [Model](https://github.com/JunDang/RxNetWorking/blob/master/RxNetWorking/Model/FlickrPhotos.swift).
  Firstly create a struct named FlickrPhoto to represent the single photo and let it conform to the Codable protocol. We need the variables of farm, server, id and secret to construct the image url.  Let’s put these variables in the struct, and write the corresponding CodingKeys so that the items can be found when being decoded.  Then implement the init(farm: Int, id: String, server: String, secrect: String) and  init(from decoder: Decoder) methods. We also need construct the image URL with those parameters. So let’s implement the function creatImageURL() which has a return type of NSURL. 
  Secondly, create a struct named FlickrPhotos to hold the array of FlickrPhoto and let it conform to the Codable protocol. The CodingKey for finding the item is “photo”.   
  Finally, move to the root element “photos”and create a struct named FlickrModel which holds FlickrPhotos. And the key for finding this element is “photos”. 
@@ -114,9 +114,9 @@ Here is the explanation of the code:
 
 For sending the network request to the Flickr API, here is the consideration. Firstly, I will need a cache system to store the image data. If the image data can be found in the cache, then I update the background with the cached image data. If there is no data cached, then I will send the request to the Flickr API to fetch the data. For saving the space, I will cache the image data instead of image itself into the cache. 
 
-Let’s create a struct FlickrAPI as  [./FlickrAPI](https://github.com/JunDang/RxNetWorking/blob/master/RxNetWorking/Services/InternetService.swift), which has the base url string, the API Key and search method. And also create an enum FlickrRequestError as  [./FlickrRequestError](https://github.com/JunDang/RxNetWorking/blob/master/RxNetWorking/Services/InternetService.swift) which lists the error case of network request to Flickr API. 
+Let’s create a struct FlickrAPI as  [FlickrAPI](https://github.com/JunDang/RxNetWorking/blob/master/RxNetWorking/Services/InternetService.swift), which has the base url string, the API Key and search method. And also create an enum FlickrRequestError as  [FlickrRequestError](https://github.com/JunDang/RxNetWorking/blob/master/RxNetWorking/Services/InternetService.swift) which lists the error case of network request to Flickr API. 
 - Protocols
-Create a new group named Protocols under the RxNetWorking. Then create a new swift file named  ImageDataCachingProtocol, as [./ImageDataCachingProtocol](https://github.com/JunDang/RxNetWorking/blob/master/RxNetWorking/Protocols/ImageDataCachingProtocol.swift). I will use the NSCache for the cache system, so implement the protocol’s methods as below:
+Create a new group named Protocols under the RxNetWorking. Then create a new swift file named  ImageDataCachingProtocol, as [ImageDataCachingProtocol](https://github.com/JunDang/RxNetWorking/blob/master/RxNetWorking/Protocols/ImageDataCachingProtocol.swift). I will use the NSCache for the cache system, so implement the protocol’s methods as below:
 ```
 class ImageDataCaching: ImageDataCachingProtocol {
     //1
@@ -139,7 +139,7 @@ Here is the explanation of the code:
 2. Use the url of the image as the key and save the image data to the cache. 
 3. Retrieve the image data from the cache.
 
-Create a new swift file named InternetServiceProtocol as [./InternetServiceProtocol](https://github.com/JunDang/RxNetWorking/blob/master/RxNetWorking/Protocols/InternetServiceProtocol.swift). Make the InternetService conform to the InternetServiceProtocol and implement the three protocol methods. 
+Create a new swift file named InternetServiceProtocol as [InternetServiceProtocol](https://github.com/JunDang/RxNetWorking/blob/master/RxNetWorking/Protocols/InternetServiceProtocol.swift). Make the InternetService conform to the InternetServiceProtocol and implement the three protocol methods. 
 Let’s implement the searchImageURL function to find the image url according to the search text:
 ```
 static func searchImageURL(searchText: String) -> Observable<Result<NSURL, Error>> {
@@ -260,14 +260,14 @@ Here is the explanation of the code:
 3. Handle the failure case. 
 ### View Model
 Create a new group named ViewModel under the RxNetWorking. Then create a new swift file named ViewModel.
-Write a class ViewModel, and we need a input which will be the searchText variable transffered from the View Controller which will be implemented later on. We also need an output, the flickrImageObservable,  which will be the result of the communicating between the view model and the model. This output will be transferred to the view controller. Now implement the ViewModel class as  [./ViewModel](https://github.com/JunDang/RxNetWorking/blob/master/RxNetWorking/ViewModel/ViewModel.swift).
+Write a class ViewModel, and we need a input which will be the searchText variable transffered from the View Controller which will be implemented later on. We also need an output, the flickrImageObservable,  which will be the result of the communicating between the view model and the model. This output will be transferred to the view controller. Now implement the ViewModel class as  [ViewModel](https://github.com/JunDang/RxNetWorking/blob/master/RxNetWorking/ViewModel/ViewModel.swift).
 Here is the explanation of the code:
 1. Search the image url and get the image.
 2. In the case of Success, return the image. In the case of Failure, return a default image.
 ### View Controller
 Now it is time to implement the UI. The UI is  a very simple one since the major purpose of this project is to demonstrate the MVVM and network request in RxSwift. Create a new group View Controller and create a new swift file FlickrViewController. Write a class FlickrViewController. Open the main story board, set the View Controller to FlickrViewController and embed it in a navigation controller. Drag a UIImageView to the FlickrViewController and make it to cover the FlickrViewController UIView completely via setting the constrains, see below picture.  Then drag a text field to the navigation bar, input Search a picture in the placeholder. Then drag from the UIImageView and TextField to the class FlickrViewController to create outlet variables of backgroundImageView and searchTextField respectively.
 
-I have installed Reachability for detecting the network access status. Now, create a new swift file RxReachability+rx, which I updated  the RxReachability from [./RxReachability](https://github.com/bmoliveira/RxReachability).
+I have installed Reachability for detecting the network access status. Now, create a new swift file RxReachability+rx, which I updated  the RxReachability from [RxReachability](https://github.com/bmoliveira/RxReachability).
 
 In the class FlickrViewController, declare a variable of Reachability, SwiftMessages, and DisposeBag respectively. Override the function viewDidLoad, implement the code as below:
 ```
@@ -365,7 +365,7 @@ Here is the explanation of the code:
 3. Implement function sendRequest and return the Observable of imageDataResult.
 4. Implement function getImage and return the Observable of imageResult.
 
-Create a new swift file TestData and implement  the class TestData as [.\TestData](https://github.com/JunDang/RxNetWorking/blob/master/RxNetWorkingTests/Mocks/TestData.swift) which will be used as the test data and test objects. 
+Create a new swift file TestData and implement  the class TestData as [TestData](https://github.com/JunDang/RxNetWorking/blob/master/RxNetWorkingTests/Mocks/TestData.swift) which will be used as the test data and test objects. 
 
 Create a new swift file ViewModelTest and implement the class ViewModeTest as below:
 ```
@@ -405,7 +405,7 @@ Here is the explanation of the code:
 2.  When the ViewModel initialized , the stored properties are not nil.
 3.  When imageURLResult emit the stubImageURL of the TestData, and imageDataResult emit the stubFlickrImageData of the TestData, the first emitted value of flikcrImageObservable of the viewModel is equal to the expected value which is the stubFlickrImageData of the TestData.
 
-So far we have completed this project, we have practiced the MVVM, network request to REST API,  and Unit Test written in RxSwift. The project can be found here [.\RxNetWorking](https://github.com/JunDang/RxNetWorking).
+So far we have completed this project, we have practiced the MVVM, network request to REST API,  and Unit Test written in RxSwift. The project can be found here [RxNetWorking](https://github.com/JunDang/RxNetWorking).
 
 
 
