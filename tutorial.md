@@ -19,9 +19,9 @@ It will be used to detect if the network is reachable.
 #### SwiftMessages
 It will be used to display messages to the users.
 
-I am going to use CocoaPods to install these third library. If not familiar with CocoaPods, refer to this link: https://cocoapods.org. In the terminal, under the project, create a [podfile](https://github.com/JunDang/RxNetWorking/blob/master/podfile) and install the podfile. At the same time, create a [./gitignore](https://github.com/JunDang/RxNetWorking/blob/master/.gitignore)so that we can ignore some files when push the project up to the GitHub.
+I am going to use CocoaPods to install these third library. If not familiar with CocoaPods, refer to [CocoaPods](https://cocoapods.org). In the terminal, under the project, create a [podfile](https://github.com/JunDang/RxNetWorking/blob/master/podfile) and install the podfile. At the same time, create a [.gitignore](https://github.com/JunDang/RxNetWorking/blob/master/.gitignore)so that we can ignore some files when push the project up to the GitHub.
 ## Implement  the MVVM design pattern
-MVVM design pattern has many advantages over MVC pattern and many articles have described these detailedly. For example, refer to this article from https://www.raywenderlich.com/34-design-patterns-by-tutorials-mvvm.
+MVVM design pattern has many advantages over MVC pattern and many articles have described these detailedly. For example, refer to this article from [MVVM Tutorial](https://www.raywenderlich.com/34-design-patterns-by-tutorials-mvvm).
 So in this tutorial, I will mainly focus on how to implement the project by following the MVVM design pattern. Now let’s work with the model layer.
 ### Model 
 Open the RxNetWorking.xcworkspace file, under the RxNetWorking, create a new group named Model, and within the Model group, create a new swift file named FlickrPhotos.swift. Click to open the swift file. 
