@@ -324,9 +324,9 @@ Override the function viewDidApear, use MessageView to display “Please input s
 
 Build the project. Type a text in the search bar and the image is loaded. 
 
-![s1](images/s1.png)
-![s2](images/s2.png)
-![s3](images/s3.png)
+![start](images/start.png)
+![error](images/error.png)
+![Toronto](images/Toronto.png)
 
 
 ### Unit Test
