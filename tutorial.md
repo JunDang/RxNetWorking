@@ -406,4 +406,4 @@ Here is the explanation of the code:
 3.  When imageURLResult emit the stubImageURL of the TestData, and imageDataResult emit the stubFlickrImageData of the TestData, the first emitted value of flikcrImageObservable of the viewModel is equal to the expected value which is the stubFlickrImageData of the TestData.
 
 So far we have completed this project, we have practiced the MVVM, network request to REST API,  and Unit Test written in RxSwift. The project can be found here [RxNetWorking](https://github.com/JunDang/RxNetWorking).
-![Step 1](images/step1.png)
+![Step 1](images/Toronto.png)
