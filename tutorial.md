@@ -323,6 +323,12 @@ Here is the explanation of the code:
 Override the function viewDidApear, use MessageView to display “Please input search text in the search bar”. 
 
 Build the project. Type a text in the search bar and the image is loaded. 
+
+![1](images/1.png)
+![s2](images/s2.png)
+![s3](images/s3.png)
+
+
 ### Unit Test
 Open the folder RxNetWorkTests, create new group Mocks. Under Mocks, create a new swift file MockInternetService and write a class MockInternetService and let it conform to InternetServiceProtocol. 
 ```
@@ -406,4 +412,3 @@ Here is the explanation of the code:
 3.  When imageURLResult emit the stubImageURL of the TestData, and imageDataResult emit the stubFlickrImageData of the TestData, the first emitted value of flikcrImageObservable of the viewModel is equal to the expected value which is the stubFlickrImageData of the TestData.
 
 So far we have completed this project, we have practiced the MVVM, network request to REST API,  and Unit Test written in RxSwift. The project can be found here [RxNetWorking](https://github.com/JunDang/RxNetWorking).
-![search1](images/search1.png)
