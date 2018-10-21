@@ -320,7 +320,7 @@ override func viewWillAppear(_ animated: Bool) {
 ```
 Here is the explanation of the code:
 1. If the net work is not connected, display the message.
-Override the function viewDidApear, use MessageView to display “Please input search text in the search bar”. I
+Override the function viewDidApear, use MessageView to display “Please input search text in the search bar”. 
 
 Build the project. Type a text in the search bar and the image is loaded. 
 ### Unit Test
@@ -407,7 +407,9 @@ Here is the explanation of the code:
 
 So far we have completed this project, we have practiced the MVVM, network request to REST API,  and Unit Test written in RxSwift. The project can be found here [RxNetWorking](https://github.com/JunDang/RxNetWorking).
 
-
+Simulator Screen Shot - iPhone XR - 2018-10-20 at 16.44.02.png
+Simulator Screen Shot - iPhone XR - 2018-10-20 at 16.45.34.png
+Simulator Screen Shot - iPhone XR - 2018-10-20 at 16.45.59.png
 
 
 
