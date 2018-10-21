@@ -326,7 +326,7 @@ Build the project. Type a text in the search bar and the image is loaded.
 
 ![start](images/start.png)
 ![error](images/error.png)
-![Toronto](images/Toronto.png)
+![toronto](images/toronto.png)
 
 
 ### Unit Test
