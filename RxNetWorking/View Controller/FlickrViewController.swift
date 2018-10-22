@@ -27,7 +27,8 @@ class FlickrViewController: UIViewController {
         //2
         let activityIndicator = UIActivityIndicatorView(style: .whiteLarge)
         backgroundImageView.addSubview(activityIndicator)
-        activityIndicator.frame = self.backgroundImageView.bounds
+        activityIndicator.frame = backgroundImageView.bounds
+        activityIndicator.center = view.center
         //3
         searchTextField.rx.controlEvent(.editingDidEndOnExit).asObservable()
             .map { self.searchTextField.text }
